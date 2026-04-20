@@ -1,12 +1,11 @@
-async function generate() {
+function generate() {
   let prompt = document.getElementById("prompt").value;
 
-  let res = await fetch("https://your-api-url.com/generate", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt })
-  });
+  if (prompt === "") {
+    document.getElementById("output").innerText = "Please type something...";
+    return;
+  }
 
-  let data = await res.json();
-  document.getElementById("output").innerText = data.result;
+  document.getElementById("output").innerText =
+    "🤖 AI Response: " + prompt;
 }
